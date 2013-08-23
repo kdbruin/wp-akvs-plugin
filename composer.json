@@ -1,3 +1,7 @@
 {
-	"name": "kdb/my-plugin"
+	"name": "kdb/my-plugin",
+	"type": "wordpress-plugin",
+	"require": {
+		"composer/installers": "*"
+	}
 }
