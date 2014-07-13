@@ -3,17 +3,17 @@ class HBConfig
 {
 	protected $config;
 
-	public function __construct(array $config)
+	public function __construct( array $config )
 	{
 		$this->config = $config;
 	}
 
-	public function __get($name)
+	public function __get( $name )
 	{
 		$value = false;
-		if (array_key_exists($name, $this->config))
+		if ( array_key_exists( $name, $this->config ) )
 		{
-			$value = $this->config[$name];
+			$value = $this->config[ $name ];
 		}
 		return $value;
 	}

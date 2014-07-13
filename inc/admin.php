@@ -4,12 +4,12 @@ class HBAdmin extends HBPlugin
 
 	protected function init()
 	{
-		register_activation_hook($this->_config->plugin_file, array(
-				$this,
-				'activate'
-		));
+		register_activation_hook( $this->_config->plugin_file, array( 
+			$this, 
+			'activate' 
+		) );
 		
-		$this->add_filter('image_send_to_editor', 'image_send_to_editor', 20, 8);
+		$this->add_filter( 'image_send_to_editor', 'image_send_to_editor', 20, 8 );
 	}
 
 	public function activate()
@@ -39,18 +39,18 @@ class HBAdmin extends HBPlugin
 	 *        	alt text for the image
 	 * @return formatted shortcode
 	 */
-	function image_send_to_editor($html, $id, $caption, $title, $align, $url, $size, $alt)
+	function image_send_to_editor( $html, $id, $caption, $title, $align, $url, $size, $alt )
 	{
 		$result = '[hb-image id="' . $id . '" size="' . $size . '" align="' . $align . '"';
-		if (!empty($caption))
+		if ( !empty( $caption ) )
 		{
 			$result = $result . ' caption="' . $caption . '"';
 		}
-		if (!empty($title))
+		if ( !empty( $title ) )
 		{
 			$result = $result . ' title="' . $title . '"';
 		}
-		if (!empty($alt))
+		if ( !empty( $alt ) )
 		{
 			$result = $result . ' alt="' . $alt . '"';
 		}
