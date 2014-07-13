@@ -9,7 +9,7 @@ class HBAdmin extends HBPlugin
 				'activate'
 		));
 		
-		$this->add_filter('image_send_to_editor', 'image_send_to_editor', 30, 7);
+		$this->add_filter('image_send_to_editor', 'image_send_to_editor', 20, 8);
 	}
 
 	public function activate()
@@ -49,6 +49,10 @@ class HBAdmin extends HBPlugin
 		if (!empty($title))
 		{
 			$result = $result . ' title="' . $title . '"';
+		}
+		if (!empty($alt))
+		{
+			$result = $result . ' alt="' . $alt . '"';
 		}
 		$result = $result . ']';
 		return $result;
