@@ -7,7 +7,7 @@ class HBPublic extends HBPlugin
 		$this->add_shortcode('hb-image', 'hb_image_shortcode');
 	}
 
-	function hb_image_shortcode($atts, $content = null, $code = "")
+	function hb_image_shortcode($attr, $content = null, $tag = "")
 	{
 		extract(shortcode_atts(array(
 				'id' => null,
@@ -16,17 +16,25 @@ class HBPublic extends HBPlugin
 				'title' => '',
 				'caption' => '',
 				'alt' => ''
-		), $atts));
-		
+		), $attr));
+
 		if (empty($id)) return;
-		
+
 		$img_html = get_image_tag($id, $alt, $title, $align, $size);
+		if (empty($caption))
+		{
+			echo $img_html;
+			return;
+		}
 		
-		$html5 = "<figure id='post-$id media-$id' class='figure align$align'>";
+		$id = 'id="' . esc_attr($id) . '"';
+		$class = 'class="' . esc_attr("wp-caption align$align") . '"';
+
+		$html5 = "<figure $id $class>";
 		$html5 .= $img_html;
 		if ($caption)
 		{
-			$html5 .= "<figcaption>$caption</figcaption>";
+			$html5 .= "<figcaption class='wp-caption-text'>$caption</figcaption>";
 		}
 		$html5 .= "</figure>";
 
