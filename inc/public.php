@@ -12,12 +12,24 @@ class HBPublic extends HBPlugin
 		extract(shortcode_atts(array(
 				'id' => null,
 				'size' => 'thumbnail',
-				'align' => 'none'
+				'align' => 'none',
+				'title' => '',
+				'caption' => '',
+				'alt' => ''
 		), $atts));
 		
 		if (empty($id)) return;
+		
+		$img_html = get_image_tag($id, $alt, $title, $align, $size);
+		
+		$html5 = "<figure id='post-$id media-$id' class='figure align$align'>";
+		$html5 .= $img_html;
+		if ($caption)
+		{
+			$html5 .= "<figcaption>$caption</figcaption>";
+		}
+		$html5 .= "</figure>";
 
-		$html = get_image_tag($id, '', '', $align, $size);
-		echo $html;
+		echo $html5;
 	}
 }

@@ -9,7 +9,7 @@ class HBAdmin extends HBPlugin
 				'activate'
 		));
 		
-		$this->add_filter('image_send_to_editor', 'image_send_to_editor', 20, 7);
+		$this->add_filter('image_send_to_editor', 'image_send_to_editor', 30, 7);
 	}
 
 	public function activate()
@@ -35,10 +35,22 @@ class HBAdmin extends HBPlugin
 	 *        	source URL of the image
 	 * @param $size string
 	 *        	size for the inserted image
+	 * @param $alt string
+	 *        	alt text for the image
 	 * @return formatted shortcode
 	 */
-	function image_send_to_editor($html, $id, $caption, $title, $align, $url, $size)
+	function image_send_to_editor($html, $id, $caption, $title, $align, $url, $size, $alt)
 	{
-		return '[hb-image id="' . $id . '" size="' . $size . '" align="' . $align . '"]';
+		$result = '[hb-image id="' . $id . '" size="' . $size . '" align="' . $align . '"';
+		if (!empty($caption))
+		{
+			$result = $result . ' caption="' . $caption . '"';
+		}
+		if (!empty($title))
+		{
+			$result = $result . ' title="' . $title . '"';
+		}
+		$result = $result . ']';
+		return $result;
 	}
 }
