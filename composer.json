@@ -1,5 +1,5 @@
 {
-	"name": "kdb/my-plugin",
+	"name": "kdb/hb-plugin",
 	"type": "wordpress-plugin",
 	"require": {
 		"composer/installers": "*"
