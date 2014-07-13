@@ -38,6 +38,6 @@ class HBPublic extends HBPlugin
 		}
 		$html5 .= "</figure>";
 
-		echo $html5;
+		return $html5;
 	}
 }
