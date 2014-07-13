@@ -20,7 +20,7 @@ abstract class HBPlugin
 		), $priority, $accepted_args);
 	}
 
-	protected function add_filter($filter, $function, $priority = 10, $accepted_args = 1)
+	protected function add_filter($filter, $function = '', $priority = 10, $accepted_args = 1)
 	{
 		add_filter($filter, array(
 				$this,
