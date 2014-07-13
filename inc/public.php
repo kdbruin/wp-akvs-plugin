@@ -23,8 +23,7 @@ class HBPublic extends HBPlugin
 		$img_html = get_image_tag($id, $alt, $title, $align, $size);
 		if (empty($caption))
 		{
-			echo $img_html;
-			return;
+			return $img_html;
 		}
 		
 		$id = 'id="' . esc_attr($id) . '"';
@@ -38,6 +37,6 @@ class HBPublic extends HBPlugin
 		}
 		$html5 .= "</figure>";
 
-		echo $html5;
+		return $html5;
 	}
 }
