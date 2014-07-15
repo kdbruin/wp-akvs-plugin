@@ -21,6 +21,7 @@ class HBAdmin extends HBPlugin
 	{
 		// set defaults
 		$defaults = array( 
+			'ga_enabled' => false, 
 			'ga_user_id' => '', 
 			'ga_url' => '' 
 		);
@@ -67,6 +68,10 @@ class HBAdmin extends HBPlugin
 			$this, 
 			'section_text' 
 		), $this->_config->plugin_file );
+		add_settings_field( $this->plugin_check_field( 'ga_enabled' ), 'Enable Google Analytics', array( 
+			$this, 
+			$this->plugin_check_function( 'ga_enabled' ) 
+		), $this->_config->plugin_file, 'ga_section' );
 		add_settings_field( $this->plugin_text_field( 'ga_user_id' ), 'GA User ID', array( 
 			$this, 
 			$this->plugin_text_function( 'ga_user_id' ) 
@@ -87,6 +92,16 @@ class HBAdmin extends HBPlugin
 		return;
 	}
 
+	public function setting_chk_ga_enabled()
+	{
+		$options = get_option( 'plugin_options' );
+		if ( is_array( $options ) && $options[ 'ga_enabled' ] )
+		{
+			$checked = ' checked="checked"';
+		}
+		echo "<input type='checkbox'" . $checked . " name='plugin_options[ga_enabled]' id='" . $this->plugin_check_field( 'ga_enabled' ) . "' />";
+	}
+
 	public function setting_txt_ga_user_id()
 	{
 		echo "<input type='text' name='plugin_options[ga_user_id]' id='" . $this->plugin_text_field( 'ga_user_id' ) . "' value='" . get_option( 'ga_user_id' ) . "' />";
@@ -95,6 +110,16 @@ class HBAdmin extends HBPlugin
 	public function setting_txt_ga_url()
 	{
 		echo "<input type='text' name='plugin_options[ga_url]' id='" . $this->plugin_text_field( 'ga_url' ) . "' value='" . get_option( 'ga_url' ) . "' />";
+	}
+
+	private function plugin_check_field( $var )
+	{
+		return 'plugin_chk_' . $var;
+	}
+
+	private function plugin_check_function( $var )
+	{
+		return 'setting_chk_' . $var;
 	}
 
 	private function plugin_text_field( $var )
