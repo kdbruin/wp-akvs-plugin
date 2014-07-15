@@ -9,12 +9,102 @@ class HBAdmin extends HBPlugin
 			'activate' 
 		) );
 		
+		// plugin settings
+		$this->add_action( 'admin_menu' );
+		$this->add_action( 'admin_init' );
+		
+		// filters
 		$this->add_filter( 'image_send_to_editor', 'image_send_to_editor', 20, 8 );
 	}
 
 	public function activate()
 	{
-		// plugin activate code
+		// set defaults
+		$defaults = array( 
+			'ga_user_id' => '', 
+			'ga_url' => '' 
+		);
+		update_option( 'plugin_options', $defaults );
+	}
+
+	public function admin_menu()
+	{
+		// options page
+		add_options_page( 'Halfje-Bruin Plugin Settings Page', 'Halfje-Bruin Plugin Settings', 'administrator', $this->_config->plugin_file, array( 
+			$this, 
+			'add_options_page' 
+		) );
+	}
+
+	public function add_options_page()
+	{
+		?>
+<div class="wrap">
+	<div class="icon32" id="icon-options-general">
+		<br>
+	</div>
+	<h2>Halfje-Bruin Plugin Instellingen</h2>
+	Instellingen voor de Halfje-Bruin Plugin.
+	<form action="options.php" method="post">
+	                                <?php settings_fields('plugin_options'); ?>
+	                                <?php do_settings_sections($this->_config->plugin_file); ?>
+	                                <p class="submit">
+			<input name="Submit" type="submit" class="button-primary"
+				value="<?php esc_attr_e('Save Changes'); ?>" />
+		</p>
+	</form>
+</div>
+<?php
+	}
+
+	public function admin_init()
+	{
+		register_setting( 'plugin_options', 'plugin_options', array( 
+			$this, 
+			'plugin_options_validate' 
+		) );
+		add_settings_section( 'ga_section', 'Google Analytics', array( 
+			$this, 
+			'section_text' 
+		), $this->_config->plugin_file );
+		add_settings_field( $this->plugin_text_field( 'ga_user_id' ), 'GA User ID', array( 
+			$this, 
+			$this->plugin_text_function( 'ga_user_id' ) 
+		), $this->_config->plugin_file, 'ga_section' );
+		add_settings_field( $this->plugin_text_field( 'ga_url' ), 'GA Site URL', array( 
+			$this, 
+			$this->plugin_text_function( 'ga_url' ) 
+		), $this->_config->plugin_file, 'ga_section' );
+	}
+
+	public function plugin_options_validate( $input )
+	{
+		return $input;
+	}
+
+	public function section_text()
+	{
+		return;
+	}
+
+	public function setting_txt_ga_user_id()
+	{
+		echo "<input type='text' name='plugin_options[ga_user_id]' id='" . $this->plugin_text_field( 'ga_user_id' ) . "' value='" . get_option( 'ga_user_id' ) . "' />";
+	}
+
+	public function setting_txt_ga_url()
+	{
+		echo "<input type='text' name='plugin_options[ga_url]' id='" . $this->plugin_text_field( 'ga_url' ) . "' value='" . get_option( 'ga_url' ) . "' />";
+	}
+
+	private function plugin_text_field( $var )
+	{
+		return 'plugin_txt_' . $var;
+	}
+
+	private function plugin_text_function( $var )
+	{
+		return 'setting_txt_' . $var;
 	}
 
 	/**
