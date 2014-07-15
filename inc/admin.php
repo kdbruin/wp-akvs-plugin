@@ -170,6 +170,10 @@ class HBAdmin extends HBPlugin
 		{
 			$result = $result . ' alt="' . $alt . '"';
 		}
+		if ( !empty( $url ) )
+		{
+			$result = $result . ' url="' . $url . '"';
+		}
 		$result = $result . ']';
 		return $result;
 	}

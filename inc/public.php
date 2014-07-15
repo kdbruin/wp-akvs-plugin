@@ -19,12 +19,14 @@ class HBPublic extends HBPlugin
 			'align' => 'none', 
 			'title' => '', 
 			'caption' => '', 
-			'alt' => '' 
+			'alt' => '', 
+			'url' => '' 
 		), $attr ) );
 		
 		if ( empty( $id ) ) return;
 		
 		$img_html = get_image_tag( $id, $alt, $title, $align, $size );
+		if ($url) $img_html = '<a href="' . esc_attr($url) . '">' . $img_html . '</a>';
 		if ( empty( $caption ) )
 		{
 			return $img_html;
