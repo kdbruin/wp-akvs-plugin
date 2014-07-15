@@ -95,6 +95,7 @@ class HBAdmin extends HBPlugin
 	public function setting_chk_ga_enabled()
 	{
 		$options = get_option( 'plugin_options' );
+		$checked = '';
 		if ( is_array( $options ) && $options[ 'ga_enabled' ] )
 		{
 			$checked = ' checked="checked"';
