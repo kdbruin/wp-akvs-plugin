@@ -1,9 +1,9 @@
 <?php
-abstract class HBPlugin
+abstract class HalfjeBruin_Plugin
 {
 	protected $_config;
 
-	public function __construct( HBConfig $config )
+	public function __construct( HalfjeBruin_Config $config )
 	{
 		$this->_config = $config;
 		

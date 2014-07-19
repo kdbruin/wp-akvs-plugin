@@ -1,5 +1,5 @@
 <?php
-class HBConfig
+class HalfjeBruin_Config
 {
 	protected $config;
 

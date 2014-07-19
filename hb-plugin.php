@@ -14,16 +14,16 @@ define( 'HB_PLUGIN_INC', HB_PLUGIN_PATH . '/inc' );
 require_once ( HB_PLUGIN_INC . '/plugin.php' );
 require_once ( HB_PLUGIN_INC . '/config.php' );
 
-$hb_class = 'HB';
+$hb_class = 'HalfjeBruin';
 
 if ( is_admin() )
 {
-	$hb_class .= 'Admin';
+	$hb_class .= '_Admin';
 	require_once ( HB_PLUGIN_INC . '/admin.php' );
 }
 else
 {
-	$hb_class .= 'Public';
+	$hb_class .= '_Public';
 	require_once ( HB_PLUGIN_INC . '/theme-functions.php' );
 	require_once ( HB_PLUGIN_INC . '/public.php' );
 }
@@ -32,6 +32,6 @@ $hb_config_data = array(
 	'plugin_file' => HB_PLUGIN_FILE 
 );
 
-$hb_plugin = new $hb_class( new HBConfig( $hb_config_data ) );
+$hb_plugin = new $hb_class( new HalfjeBruin_Config( $hb_config_data ) );
 
 unset( $hb_class, $hb_config_data );

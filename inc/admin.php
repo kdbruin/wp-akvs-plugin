@@ -1,5 +1,5 @@
 <?php
-class HBAdmin extends HBPlugin
+class HalfjeBruin_Admin extends HalfjeBruin_Plugin
 {
 
 	protected function init()

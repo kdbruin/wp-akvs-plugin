@@ -1,7 +1,7 @@
 <?php
 
-function my_say_hello( $name = '' )
+function hb_say_hello( $name = '' )
 {
-	global $my_plugin;
-	$my_plugin->say_hello( $name );
+	global $hb_plugin;
+	$hb_plugin->say_hello( $name );
 }
