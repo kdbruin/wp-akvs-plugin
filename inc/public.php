@@ -8,7 +8,7 @@ class HalfjeBruin_Public extends HalfjeBruin_Plugin
 		$this->add_shortcode( 'hb-image', 'hb_image_shortcode' );
 		
 		// hooks
-		if ( $this->_config->ga_enabled ) $this->add_action( 'wp_footer', 'hb_google_analytics' );
+		if ( $this->get_plugin_option( 'ga_enabled' ) ) $this->add_action( 'wp_footer', 'hb_google_analytics' );
 	}
 
 	function hb_image_shortcode( $attr, $content = null, $tag = "" )
