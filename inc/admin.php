@@ -31,7 +31,7 @@ class HalfjeBruin_Admin extends HalfjeBruin_Plugin
 	public function admin_menu()
 	{
 		// options page
-		add_options_page( 'Halfje-Bruin Plugin Settings Page', 'Halfje-Bruin Plugin Settings', 'administrator', $this->_config->plugin_file, array( 
+		add_options_page( 'Halfje-Bruin Plugin Settings Page', 'Halfje-Bruin Plugin', 'administrator', $this->_config->plugin_file, array( 
 			$this, 
 			'add_options_page' 
 		) );
