@@ -96,9 +96,12 @@ class HalfjeBruin_Admin extends HalfjeBruin_Plugin
 	{
 		$options = get_option( 'plugin_options' );
 		$checked = '';
-		if ( is_array( $options ) && $options[ 'ga_enabled' ] )
+		if ( is_array( $options ) && array_key_exists( 'ga_enabled', $options ) )
 		{
-			$checked = ' checked="checked"';
+			if ( $options[ 'ga_enabled' ] )
+			{
+				$checked = ' checked="checked"';
+			}
 		}
 		echo "<input type='checkbox'" . $checked . " name='plugin_options[ga_enabled]' id='" . $this->plugin_check_field( 'ga_enabled' ) . "' />";
 	}
@@ -122,7 +125,7 @@ class HalfjeBruin_Admin extends HalfjeBruin_Plugin
 		{
 			$value = $options[ 'ga_url' ];
 		}
-		echo "<input type='text' name='plugin_options[ga_url]' id='" . $this->plugin_text_field( 'ga_url' ) . "' value='" . get_option( 'ga_url' ) . "' />";
+		echo "<input type='text' name='plugin_options[ga_url]' id='" . $this->plugin_text_field( 'ga_url' ) . "' value='" . $value . "' />";
 	}
 
 	private function plugin_check_field( $var )
