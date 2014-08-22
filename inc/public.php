@@ -48,8 +48,8 @@ class HalfjeBruin_Public extends HalfjeBruin_Plugin
 
 	function hb_google_analytics()
 	{
-		$ga_user_id = $this->_config->ga_user_id;
-		$ga_url = $this->_config->ga_url;
+		$ga_user_id = $this->get_plugin_option( 'ga_user_id' );
+		$ga_url = $this->get_plugin_option( 'ga_url' );
 		
 		if ( empty( $ga_user_id ) || empty( $ga_url ) ) return;
 		

@@ -94,37 +94,25 @@ class HalfjeBruin_Admin extends HalfjeBruin_Plugin
 
 	public function setting_chk_ga_enabled()
 	{
-		$options = get_option( 'plugin_options' );
 		$checked = '';
-		if ( is_array( $options ) && array_key_exists( 'ga_enabled', $options ) )
+		if ( $this->get_plugin_option( 'ga_enabled' ) )
 		{
-			if ( $options[ 'ga_enabled' ] )
-			{
-				$checked = ' checked="checked"';
-			}
+			$checked = ' checked="checked"';
 		}
 		echo "<input type='checkbox'" . $checked . " name='plugin_options[ga_enabled]' id='" . $this->plugin_check_field( 'ga_enabled' ) . "' />";
 	}
 
 	public function setting_txt_ga_user_id()
 	{
-		$options = get_option( 'plugin_options' );
-		$value = '';
-		if ( is_array( $options ) && array_key_exists( 'ga_user_id', $options ) )
-		{
-			$value = $options[ 'ga_user_id' ];
-		}
+		$value = $this->get_plugin_option( 'ga_user_id' );
+		if ( empty( $value ) ) $value = '';
 		echo "<input type='text' name='plugin_options[ga_user_id]' id='" . $this->plugin_text_field( 'ga_user_id' ) . "' value='" . $value . "' />";
 	}
 
 	public function setting_txt_ga_url()
 	{
-		$options = get_option( 'plugin_options' );
-		$value = '';
-		if ( is_array( $options ) && array_key_exists( 'ga_url', $options ) )
-		{
-			$value = $options[ 'ga_url' ];
-		}
+		$value = $this->get_plugin_option( 'ga_url' );
+		if ( ! $value ) $value = '';
 		echo "<input type='text' name='plugin_options[ga_url]' id='" . $this->plugin_text_field( 'ga_url' ) . "' value='" . $value . "' />";
 	}
 
