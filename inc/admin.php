@@ -105,11 +105,23 @@ class HalfjeBruin_Admin extends HalfjeBruin_Plugin
 
 	public function setting_txt_ga_user_id()
 	{
-		echo "<input type='text' name='plugin_options[ga_user_id]' id='" . $this->plugin_text_field( 'ga_user_id' ) . "' value='" . get_option( 'ga_user_id' ) . "' />";
+		$options = get_option( 'plugin_options' );
+		$value = '';
+		if ( is_array( $options ) && array_key_exists( 'ga_user_id', $options ) )
+		{
+			$value = $options[ 'ga_user_id' ];
+		}
+		echo "<input type='text' name='plugin_options[ga_user_id]' id='" . $this->plugin_text_field( 'ga_user_id' ) . "' value='" . $value . "' />";
 	}
 
 	public function setting_txt_ga_url()
 	{
+		$options = get_option( 'plugin_options' );
+		$value = '';
+		if ( is_array( $options ) && array_key_exists( 'ga_url', $options ) )
+		{
+			$value = $options[ 'ga_url' ];
+		}
 		echo "<input type='text' name='plugin_options[ga_url]' id='" . $this->plugin_text_field( 'ga_url' ) . "' value='" . get_option( 'ga_url' ) . "' />";
 	}
 
