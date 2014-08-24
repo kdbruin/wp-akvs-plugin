@@ -6,30 +6,30 @@
 /**
  * Add widget areas for the homepage, contacts page
  */
-function akvs_widgets_init()
-{
-	// Widget area for the home page
-	register_sidebar( array( 
-		'name' => __( 'Homepage Widget Area', 'akvs' ), 
-		'id' => 'homepage-widget-area', 
-		'description' => __( 'Shown only on the homepage.', 'akvs' ), 
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
-		'after_widget' => '</li>', 
-		'before_title' => '<h3 class="widget-title">', 
-		'after_title' => '</h3>' 
-	) );
+// function akvs_widgets_init()
+// {
+// 	// Widget area for the home page
+// 	register_sidebar( array( 
+// 		'name' => __( 'Homepage Widget Area', 'akvs' ), 
+// 		'id' => 'homepage-widget-area', 
+// 		'description' => __( 'Shown only on the homepage.', 'akvs' ), 
+// 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
+// 		'after_widget' => '</li>', 
+// 		'before_title' => '<h3 class="widget-title">', 
+// 		'after_title' => '</h3>' 
+// 	) );
 	
-	// Widget area for the contact pages
-	register_sidebar( array( 
-		'name' => __( 'Contact Pages Widget Area', 'akvs' ), 
-		'id' => 'contacts-widget-area', 
-		'description' => __( 'Shown only on the contact pages.', 'akvs' ), 
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
-		'after_widget' => '</li>', 
-		'before_title' => '<h3 class="widget-title">', 
-		'after_title' => '</h3>' 
-	) );
-}
+// 	// Widget area for the contact pages
+// 	register_sidebar( array( 
+// 		'name' => __( 'Contact Pages Widget Area', 'akvs' ), 
+// 		'id' => 'contacts-widget-area', 
+// 		'description' => __( 'Shown only on the contact pages.', 'akvs' ), 
+// 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
+// 		'after_widget' => '</li>', 
+// 		'before_title' => '<h3 class="widget-title">', 
+// 		'after_title' => '</h3>' 
+// 	) );
+// }
 // add_action('widgets_init', 'akvs_widgets_init');
 
 // Verjaardagen
