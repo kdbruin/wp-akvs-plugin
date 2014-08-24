@@ -73,7 +73,7 @@ function akvs_wedstrijd_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' || $poule == '' || $wsnum == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$wedstrijd = $competitie->getWedstrijd( $poule, $wsnum );
 	
 	if ( $wedstrijd === FALSE )
@@ -122,7 +122,7 @@ function akvs_uitslagen_shortcode( $atts, $content = '' )
 		$vanaf = akvs_format_iso( $vanaf );
 	}
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$uitslagen = $competitie->getUitslagen( $vanaf, $tot );
 	
 	if ( count( $uitslagen ) == 0 )
@@ -182,7 +182,7 @@ function akvs_wedstrijdoverzicht_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	
 	$vanaf = date( 'Y-m-d' );
 	$schema = $competitie->getTotaalSchema( $vanaf );
@@ -248,7 +248,7 @@ function akvs_competitie_indeling_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$indeling = $competitie->getIndeling();
 	
 	if ( count( $indeling ) == 0 )
@@ -341,7 +341,7 @@ function akvs_pouleindeling_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' || $poule == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$teams = $competitie->getTeams( $poule );
 	
 	if ( count( $teams ) == 0 )
@@ -432,7 +432,7 @@ function akvs_poulewedstrijden_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' || $poule == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$vanaf = date( 'Y-m-d' );
 	$schema = $competitie->getSchema( $poule, $vanaf );
 	
@@ -498,7 +498,7 @@ function akvs_poulestand_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' || $poule == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$stand = $competitie->getStand( $poule );
 	
 	if ( count( $stand ) == 0 )
@@ -524,7 +524,7 @@ function akvs_eindstanden_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$standen = $competitie->getEindStanden();
 	
 	if ( count( $standen ) == 0 )
@@ -597,7 +597,7 @@ function akvs_pouleuitslagen_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' || $poule == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$matrix = $competitie->getMatrix( $poule );
 	
 	if ( count( $matrix ) == 0 )
@@ -628,7 +628,7 @@ function akvs_pouleoverzicht_shortcode( $atts, $content = '' )
 	
 	if ( $xml == '' || $poule == '' ) return '';
 	
-	$competitie = new Competitie( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$competitie = new AKVS_Competitie( akvs_get_xml_filename( $xml ) );
 	$vanaf = date( 'Y-m-d' );
 	
 	// Afschrijven en inleveren wedstrijdformulieren
@@ -705,7 +705,7 @@ function akvs_kalender_shortcode( $atts, $content = '' )
 		'aantal' => '0' 
 	), $atts ) );
 	
-	$kalender = new Kalender( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$kalender = new AKVS_Kalender( akvs_get_xml_filename( $xml ) );
 	$activiteiten = $kalender->activiteiten( $vanaf, $tot );
 	
 	if ( count( $activiteiten ) == 0 )
@@ -778,7 +778,7 @@ function akvs_sponsors_shortcode( $atts, $content = '' )
 		'xml' => 'sponsors.xml' 
 	), $atts ) );
 	
-	$sponsors = new Sponsors( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$sponsors = new AKVS_Sponsors( akvs_get_xml_filename( $xml ) );
 	$overzicht = $sponsors->sponsors();
 	
 	if ( count( $overzicht ) == 0 ) return '';
@@ -828,7 +828,7 @@ function akvs_verjaardagen_shortcode( $atts, $content = '' )
 		'xml' => 'verjaardagen.xml' 
 	), $atts ) );
 	
-	$verjaardagen = new Verjaardagen( WP_CONTENT_DIR . '/uploads/akvsoesterkwartier/' . $xml );
+	$verjaardagen = new AKVS_Verjaardagen( akvs_get_xml_filename( $xml ) );
 	$deze_week = $verjaardagen->jarigen();
 	
 	if ( count( $deze_week ) == 0 )

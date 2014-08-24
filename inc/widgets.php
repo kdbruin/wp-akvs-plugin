@@ -42,7 +42,7 @@ class AKVS_VerjaardagenWidget extends WP_Widget
 			'classname' => 'AKVS_VerjaardagenWidget', 
 			'description' => 'Verjaardagen de komende week' 
 		);
-		$this->WP_Widget( 'AKVS_VerjaardagenWidget', 'Verjaardagen Widget', $widget_ops );
+		$this->WP_Widget( 'AKVS_VerjaardagenWidget', 'AKVS Verjaardagen', $widget_ops );
 	}
 
 	function form( $instance )
@@ -93,7 +93,7 @@ class AKVS_ActiviteitenWidget extends WP_Widget
 			'classname' => 'AKVS_ActiviteitenWidget', 
 			'description' => 'Aankomende activiteiten' 
 		);
-		$this->WP_Widget( 'AKVS_ActiviteitenWidget', 'Activiteiten Widget', $widget_ops );
+		$this->WP_Widget( 'AKVS_ActiviteitenWidget', 'AKVS Activiteiten', $widget_ops );
 	}
 
 	function form( $instance )
@@ -146,7 +146,7 @@ class AKVS_SponsorWidget extends WP_Widget
 			'classname' => 'AKVS_SponsorWidget', 
 			'description' => 'Onze sponsors' 
 		);
-		$this->WP_Widget( 'AKVS_SponsorWidget', 'Sponsor Widget', $widget_ops );
+		$this->WP_Widget( 'AKVS_SponsorWidget', 'AKVS Sponsors', $widget_ops );
 	}
 
 	function form( $instance )
@@ -197,7 +197,7 @@ class AKVS_SocialWidget extends WP_Widget
 			'classname' => 'AKVS_SocialWidget', 
 			'description' => 'Social links' 
 		);
-		$this->WP_Widget( 'AKVS_SocialWidget', 'Social Widget', $widget_ops );
+		$this->WP_Widget( 'AKVS_SocialWidget', 'AKVS Social', $widget_ops );
 	}
 
 	function form( $instance )
@@ -237,8 +237,3 @@ class AKVS_SocialWidget extends WP_Widget
 		echo $after_widget;
 	}
 }
-
-function akvs_register_widgets()
-{
-}
-add_action( 'widgets_init', 'akvs_register_widgets');
