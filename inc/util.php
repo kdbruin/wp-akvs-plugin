@@ -276,13 +276,13 @@ function akvs_get_xml_filename( $xml )
 {
 	$result = '';
 	$upload_dir = wp_upload_dir();
-	if ( $upload_dir[ 'error' ] != false )
+	if ( !empty( $upload_dir[ 'error' ] ) )
 	{
 		$result = trailingslashit( $upload_dir[ 'basedir' ] );
 	}
 	else
 	{
-		$result = trailingslashit( WP_CONTENT_DIR );
+		$result = trailingslashit( WP_CONTENT_DIR ) . 'uploads/';
 	}
 	$result = $result . 'akvsoesterkwartier/' . $xml;
 	return $result;
