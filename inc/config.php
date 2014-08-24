@@ -1,5 +1,5 @@
 <?php
-class HalfjeBruin_Config
+class AKVSoesterkwartier_Config
 {
 	protected $config;
 

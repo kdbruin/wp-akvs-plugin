@@ -1,9 +1,9 @@
 <?php
-abstract class HalfjeBruin_Plugin
+abstract class AKVSoesterkwartier_Plugin
 {
 	protected $_config;
 
-	public function __construct( HalfjeBruin_Config $config )
+	public function __construct( AKVSoesterkwartier_Config $config )
 	{
 		$this->_config = $config;
 		
@@ -34,15 +34,5 @@ abstract class HalfjeBruin_Plugin
 			$this, 
 			$function == '' ? $action . '_shortcode' : $function 
 		) );
-	}
-
-	protected function get_plugin_option( $id )
-	{
-		$options = get_option( 'plugin_options' );
-		if ( is_array( $options ) && array_key_exists( $id, $options ) )
-		{
-			return $options[ $id ];
-		}
-		return false;
 	}
 }

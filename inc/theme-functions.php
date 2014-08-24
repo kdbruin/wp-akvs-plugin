@@ -1,7 +1,8 @@
 <?php
 
-function hb_say_hello( $name = '' )
+function akvs_say_hello( $name = '' )
 {
-	global $hb_plugin;
-	$hb_plugin->say_hello( $name );
+	global $akvs_plugin;
+	$akvs_plugin->say_hello( $name );
 }
+
