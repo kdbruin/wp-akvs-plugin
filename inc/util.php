@@ -264,7 +264,9 @@ function akvs_format_uitslag( $uitslag )
 function get_category_id( $slug )
 {
 	$term = get_term_by( 'slug', $slug, 'category' );
-	return $term->term_id;
+	if ( $term ) return $term->term_id;
+
+	return '';
 }
 
 function akvs_get_xml_meta( $post_id, $meta_name )
