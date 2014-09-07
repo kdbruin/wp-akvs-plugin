@@ -132,7 +132,7 @@ function akvs_img_link( $dir, $fname, $title = '', $alt = '', $atts = array() )
 
 function akvs_href( $url, $content, $atts = array() )
 {
-	$result .= '<a href="' . $url . '"';
+	$result = '<a href="' . $url . '"';
 	foreach ( $atts as $att )
 	{
 		$result .= ' ' . $att;
