@@ -101,7 +101,8 @@ class AKVS_ActiviteitenWidget extends WP_Widget
 		
 		echo do_shortcode( '[akvs_kalender aantal="3"]' );
 		
-		echo '<p class="more-activities"><a href="' . home_url( '/vereniging/activiteiten/' ) . '">Meer activiteiten<i class="fa fa-arrow-circle-o-right"></i></a></p>';
+		$more = __( 'Meer activiteiten<i class="fa fa-arrow-circle-o-right"></i>', 'akvs-plugin' );
+		echo '<p class="more-activities"><a href="' . home_url( '/vereniging/activiteiten/' ) . '">' . $more . '</a></p>';
 		
 		echo $after_widget;
 	}
