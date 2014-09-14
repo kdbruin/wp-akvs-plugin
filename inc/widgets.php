@@ -3,35 +3,6 @@
  * Widgets voor de AKV Soesterkwartier website
  */
 
-/**
- * Add widget areas for the homepage, contacts page
- */
-// function akvs_widgets_init()
-// {
-// 	// Widget area for the home page
-// 	register_sidebar( array( 
-// 		'name' => __( 'Homepage Widget Area', 'akvs' ), 
-// 		'id' => 'homepage-widget-area', 
-// 		'description' => __( 'Shown only on the homepage.', 'akvs' ), 
-// 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
-// 		'after_widget' => '</li>', 
-// 		'before_title' => '<h3 class="widget-title">', 
-// 		'after_title' => '</h3>' 
-// 	) );
-	
-// 	// Widget area for the contact pages
-// 	register_sidebar( array( 
-// 		'name' => __( 'Contact Pages Widget Area', 'akvs' ), 
-// 		'id' => 'contacts-widget-area', 
-// 		'description' => __( 'Shown only on the contact pages.', 'akvs' ), 
-// 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
-// 		'after_widget' => '</li>', 
-// 		'before_title' => '<h3 class="widget-title">', 
-// 		'after_title' => '</h3>' 
-// 	) );
-// }
-// add_action('widgets_init', 'akvs_widgets_init');
-
 // Verjaardagen
 class AKVS_VerjaardagenWidget extends WP_Widget
 {
@@ -130,7 +101,7 @@ class AKVS_ActiviteitenWidget extends WP_Widget
 		
 		echo do_shortcode( '[akvs_kalender aantal="3"]' );
 		
-		echo '<p class="alignright"><a href="' . home_url( '/vereniging/activiteiten/' ) . '">Meer activiteiten...</a></p>';
+		echo '<p class="more-activities"><a href="' . home_url( '/vereniging/activiteiten/' ) . '">Meer activiteiten<i class="fa fa-arrow-circle-o-right"></i></a></p>';
 		
 		echo $after_widget;
 	}
