@@ -309,7 +309,7 @@ add_shortcode( 'akvs_competitie_indeling', 'akvs_competitie_indeling_shortcode' 
  */
 function akvs_format_pouleindeling( $teams )
 {
-	$result .= akvs_table( 'akvs-indeling' );
+	$result = akvs_table( 'akvs-indeling' );
 	$result .= akvs_thead( array( 
 		'ploeg@2', 
 		'plaats' 
@@ -634,38 +634,28 @@ function akvs_pouleoverzicht_shortcode( $atts, $content = '' )
 	// Afschrijven en inleveren wedstrijdformulieren
 	$result = do_shortcode( '[akvs_ws]' );
 	
-	// tab definitie
-	$result .= '<ul class="tabs"><li><a href="#wedstrijden">Wedstrijden</a></li><li><a href="#stand">Stand</a></li><li><a href="#uitslagen">Uitslagen</a></li><li><a href="#indeling">Indeling</a></li><li><a href="#teaminfo">Team info</a></li></ul>';
-	
-	// tab content
-	$result .= '<ul class="tabs-content">';
-	
 	// wedstrijden
+	$result .= do_shortcode( '[tabby title="Wedstrijden"]' );
 	$schema = $competitie->getSchema( $poule, $vanaf );
-	$result .= '<li id="wedstrijdenTab">';
 	$result .= akvs_format_poulewedstrijden( $schema, $competitie->poule( $poule ) );
-	$result .= '</li>';
 	
 	// stand
+	$result .= do_shortcode( '[tabby title="Stand"]' );
 	$stand = $competitie->getStand( $poule );
-	$result .= '<li id="standTab">';
 	$result .= akvs_format_poulestand( $stand );
-	$result .= '</li>';
 	
 	// uitslagen
+	$result .= do_shortcode( '[tabby title="Uitslagen"]' );
 	$matrix = $competitie->getMatrix( $poule );
-	$result .= '<li id="uitslagenTab">';
 	$result .= akvs_format_pouleuitslagen( $matrix, $competitie, $poule );
-	$result .= '</li>';
 	
 	// indeling
+	$result .= do_shortcode( '[tabby title="Indeling"]' );
 	$teams = $competitie->getTeams( $poule );
-	$result .= '<li id="indelingTab">';
 	$result .= akvs_format_pouleindeling( $teams );
-	$result .= '</li>';
 	
 	// team info
-	$result .= '<li id="teaminfoTab">';
+	$result .= do_shortcode( '[tabby title="Team Info"]' );
 	$result .= '<p>';
 	if ( empty( $foto ) )
 	{
@@ -678,10 +668,9 @@ function akvs_pouleoverzicht_shortcode( $atts, $content = '' )
 	$result .= '</p><p>';
 	$result .= 'Spelers: ' . $spelers . '<br />' . 'Coach: ' . $coach;
 	$result .= '</p>';
-	$result .= '</li>';
 	
 	// einde tab content
-	$result .= '</ul>';
+	$result .= do_shortcode( '[tabbyending]' );
 	
 	return $result;
 }
