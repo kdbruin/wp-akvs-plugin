@@ -656,7 +656,7 @@ function akvs_pouleoverzicht_shortcode( $atts, $content = '' )
 	
 	// team info
 	$result .= do_shortcode( '[tabby title="Team Info"]' );
-	$result .= '<p>';
+	$result .= '<p class="akvs-teaminfo">';
 	if ( empty( $foto ) )
 	{
 		$result .= 'Er is nog geen teamfoto beschikbaar.';
@@ -665,7 +665,7 @@ function akvs_pouleoverzicht_shortcode( $atts, $content = '' )
 	{
 		$result .= do_shortcode( '[shashin type="photo" id="' . $foto . '" size="large"]' );
 	}
-	$result .= '</p><p>';
+	$result .= '</p><p class="akvs-teaminfo">';
 	$result .= 'Spelers: ' . $spelers . '<br />' . 'Coach: ' . $coach;
 	$result .= '</p>';
 	
