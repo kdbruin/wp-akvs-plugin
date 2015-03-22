@@ -666,7 +666,7 @@ function akvs_pouleoverzicht_shortcode( $atts, $content = '' )
 		$result .= do_shortcode( '[shashin type="photo" id="' . $foto . '" size="large"]' );
 	}
 	$result .= '</p><p class="akvs-teaminfo">';
-	$result .= 'Spelers: ' . $spelers . '<br />' . 'Coach: ' . $coach;
+	$result .= 'Spelers: ' . $spelers . '<br />' . 'Trainer/coach: ' . $coach;
 	$result .= '</p>';
 	
 	// einde tab content
