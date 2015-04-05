@@ -135,7 +135,7 @@ function akvs_uitslagen_shortcode( $atts, $content = '' )
 		'datum', 
 		'wedstrijd@3', 
 		'uitslag', 
-		'starfw' 
+		'strafw' 
 	) );
 	$result .= akvs_tbody();
 	
